@@ -7,7 +7,7 @@ export default {
     secondary: '#3b3b3a',
   },
   fonts: {
-    primary: 'Matter-Medium',
-    bold: 'Matter-Regular',
+    medium: 'Matter-Medium',
+    regular: 'Matter-Regular',
   },
 };
