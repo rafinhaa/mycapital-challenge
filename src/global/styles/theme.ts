@@ -6,4 +6,8 @@ export default {
     titleSecondary: '#edecec',
     secondary: '#3b3b3a',
   },
+  fonts: {
+    primary: 'Matter-Medium',
+    bold: 'Matter-Regular',
+  },
 };
