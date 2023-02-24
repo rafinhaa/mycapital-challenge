@@ -1,9 +1,7 @@
 import {ColorValue, TextInput} from 'react-native';
 import styled from 'styled-components/native';
 
-export const InputContainer = styled.View`
-  margin-bottom: 12px;
-`;
+export const InputContainer = styled.View``;
 
 export const Title = styled.Text`
   color: ${({theme}) => theme.colors.title};
