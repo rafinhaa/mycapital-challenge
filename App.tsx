@@ -1,12 +1,12 @@
 import React from 'react';
-import {View} from 'react-native';
 import {ThemeProvider} from 'styled-components';
 import theme from './src/global/styles/theme';
+import {Routes} from './src/routes/index';
 
 const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
-      <View />
+      <Routes />
     </ThemeProvider>
   );
 };
