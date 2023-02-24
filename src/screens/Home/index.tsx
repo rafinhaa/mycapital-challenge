@@ -1,10 +1,11 @@
 import React from 'react';
-import {View} from 'react-native';
+import {Alert, View} from 'react-native';
 
 import {useForm} from 'react-hook-form';
 import {zodResolver} from '@hookform/resolvers/zod';
 
 import {actionCreateSchema} from './schema';
+import {actionCreate} from '../../storage/action';
 
 import {ActionCreateFormData} from './types';
 
@@ -27,9 +28,11 @@ export const Home: React.FC = () => {
 
   const handleCreateNewAction = async (data: ActionCreateFormData) => {
     try {
+      await actionCreate(JSON.stringify(data));
+      Alert.alert('Sucesso!', 'A ação foi cadastrada!');
       reset();
     } catch (error) {
-      console.log(error);
+      Alert.alert('Erro!', `Não foi possível cadastrar a ação erro: ${error}`);
     }
   };
 
