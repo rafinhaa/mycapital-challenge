@@ -1,10 +1,11 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {Text} from 'react-native';
+import {BaseScreen} from '../../components/BaseScreen';
 
 export const ListActions: React.FC = () => {
   return (
-    <View>
-      <Text>ListActions</Text>
-    </View>
+    <BaseScreen>
+      <Text style={{color: 'white'}}>ListActions</Text>
+    </BaseScreen>
   );
 };
