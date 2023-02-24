@@ -10,6 +10,7 @@ import {SectionTitle} from './components/SectionTitle';
 import {ActionCard} from './components/ActionCard';
 import {TitleScreen} from '../../components/TitleScreen';
 import {Loader} from '../../components/Loader';
+import {EmptyList} from './components/EmptyList';
 
 export const ListActions: React.FC = () => {
   const [actions, setActions] = useState<SectionActionData[]>([]);
@@ -68,6 +69,7 @@ export const ListActions: React.FC = () => {
             <SectionTitle>{date}</SectionTitle>
           )}
           showsVerticalScrollIndicator={false}
+          ListEmptyComponent={EmptyList}
         />
       )}
     </BaseScreen>
