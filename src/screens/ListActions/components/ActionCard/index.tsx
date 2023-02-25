@@ -1,5 +1,6 @@
 import React from 'react';
 import {View} from 'react-native';
+import {formatToBRLCurrency} from '../../../../utils/formatToBRLCurrency';
 
 import {
   LeftInfos,
@@ -12,10 +13,7 @@ import {
 import {ActionCardProps} from './types';
 
 export const ActionCard: React.FC<ActionCardProps> = ({code, name, value}) => {
-  const valueInRealBrazilian = new Intl.NumberFormat('pt-BR', {
-    style: 'currency',
-    currency: 'BRL',
-  }).format(Number(value));
+  const valueInRealBrazilian = formatToBRLCurrency(value);
 
   return (
     <CardContainer>

@@ -4,3 +4,7 @@ export type SectionActionData = {
   date: string;
   data: storageAction[];
 };
+
+export type TotalActionsValuesByData = {
+  [date: string]: number;
+};
