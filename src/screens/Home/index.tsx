@@ -3,6 +3,7 @@ import {Alert, View} from 'react-native';
 
 import {useForm} from 'react-hook-form';
 import {zodResolver} from '@hookform/resolvers/zod';
+import uuid from 'react-native-uuid';
 
 import {actionCreateSchema} from './schema';
 import {actionCreate} from '../../storage/action';
@@ -49,7 +50,12 @@ export const Home: React.FC = () => {
   const handleCreateNewAction = async (data: ActionCreateFormData) => {
     try {
       await selectedDateIsHoliday(data.date);
-      await actionCreate(JSON.stringify(data));
+
+      await actionCreate({
+        id: uuid.v4().toString(),
+        ...data,
+      });
+
       Alert.alert('Sucesso!', 'A ação foi cadastrada!');
       reset();
     } catch (error) {

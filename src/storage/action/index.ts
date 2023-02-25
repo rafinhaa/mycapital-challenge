@@ -1,11 +1,15 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {ACTION_COLLECTION} from '../storageConfig';
+import {storageAction} from './types';
 
-export const actionCreate = async (newAction: string) => {
+export const actionCreate = async (newAction: storageAction) => {
   try {
     const storedActions = await actionGetAll();
 
-    const storage = JSON.stringify([...storedActions, newAction]);
+    const storage = JSON.stringify([
+      ...storedActions,
+      JSON.stringify(newAction),
+    ]);
 
     await AsyncStorage.setItem(ACTION_COLLECTION, storage);
   } catch (error) {

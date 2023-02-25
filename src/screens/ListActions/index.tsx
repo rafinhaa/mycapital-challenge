@@ -61,7 +61,7 @@ export const ListActions: React.FC = () => {
       ) : (
         <SectionList
           sections={actions}
-          keyExtractor={(item, index) => item.code + index}
+          keyExtractor={({id}) => id}
           renderItem={({item}) => (
             <ActionCard code={item.code} name={item.name} value={item.value} />
           )}

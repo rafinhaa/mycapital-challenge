@@ -15,7 +15,7 @@ export const ActionCard: React.FC<ActionCardProps> = ({code, name, value}) => {
   const valueInRealBrazilian = new Intl.NumberFormat('pt-BR', {
     style: 'currency',
     currency: 'BRL',
-  }).format(value);
+  }).format(Number(value));
 
   return (
     <CardContainer>
