@@ -6,6 +6,7 @@ import {zodResolver} from '@hookform/resolvers/zod';
 
 import {actionCreateSchema} from './schema';
 import {actionCreate} from '../../storage/action';
+import {getHolidays} from '../../services/getHolidays';
 
 import {ActionCreateFormData} from './types';
 
@@ -26,13 +27,33 @@ export const Home: React.FC = () => {
     resolver: zodResolver(actionCreateSchema),
   });
 
+  const selectedDateIsHoliday = async (date: string) => {
+    try {
+      const year = date.split('/')[2];
+      const formattedDate = `${year}-${date.split('/')[1]}-${
+        date.split('/')[0]
+      }`;
+      const holidays = await getHolidays(year);
+      const isHoliday = holidays.some(
+        holiday => holiday.date === formattedDate,
+      );
+
+      if (isHoliday) {
+        throw new Error('A data escolhida é um feriado');
+      }
+    } catch (error) {
+      throw error;
+    }
+  };
+
   const handleCreateNewAction = async (data: ActionCreateFormData) => {
     try {
+      await selectedDateIsHoliday(data.date);
       await actionCreate(JSON.stringify(data));
       Alert.alert('Sucesso!', 'A ação foi cadastrada!');
       reset();
     } catch (error) {
-      Alert.alert('Erro!', `Não foi possível cadastrar a ação erro: ${error}`);
+      Alert.alert('Erro!', `Não foi possível cadastrar a ação: ${error}`);
     }
   };
 
